@@ -1,4 +1,4 @@
 
-public class Revista {
+public class Revista extends MaterialBiblioteca{
 
 }

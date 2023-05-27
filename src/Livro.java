@@ -1,4 +1,4 @@
 
-public class Livro {
+public class Livro extends MaterialBiblioteca{
 
 }
