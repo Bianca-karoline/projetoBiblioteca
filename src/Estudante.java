@@ -1,32 +1,10 @@
 
-public class Estudante extends Pessoa{
-    private String idEstudante;
+public class Aluno extends Usuario{
+	private String curso;
 
-    public String getIdEstudante() {
-        return idEstudante;
-    }
-
-    public void setIdEstudante(String idEstudante) {
-        this.idEstudante = idEstudante;
-    }
-
-    @Override
-    public void devolver() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void emprestar() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void regularizar() {
-        // TODO Auto-generated method stub
-        
-    }
-
+	public Aluno(String nome, String cpf, String telefone, String email, String curso) {
+		super(nome, cpf, telefone, email);
+		this.curso = curso;
+	}
     
 }
