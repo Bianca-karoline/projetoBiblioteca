@@ -13,9 +13,8 @@ public abstract class ItemBiblioteca implements Comparable<ItemBiblioteca>{
 	}
 
 
-	//Metodo para verificar disponibilidade 
-	//se quantidadeExemplares <= 0  = indisponivel senão disponivel 
-	public abstract void verificarDisponibilidade();
+	//Metodo para verificar disponibilidade
+	public abstract boolean verificarDisponibilidade();
 	
 
 	public String getTitulo() {
@@ -49,6 +48,28 @@ public abstract class ItemBiblioteca implements Comparable<ItemBiblioteca>{
 	public void setQtdExemplares(int qtdExemplares) {
 		this.qtdExemplares = qtdExemplares;
 	}
+	
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "ItemBiblioteca [titulo=" + titulo 
+				+ ", autor=" + autor 
+				+ ", editora=" + editora 
+				+ ", categoria=" + categoria 
+				+ ", qtdExemplares=" + qtdExemplares 
+				+ "]";
+	}
+
 
 	@Override
 	public int compareTo(ItemBiblioteca item) {
