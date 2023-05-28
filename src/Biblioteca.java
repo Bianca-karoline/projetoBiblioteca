@@ -1,5 +1,12 @@
 import java.util.ArrayList;
 
 public class Biblioteca {
-    private ArrayList<MaterialBiblioteca> acervo = new ArrayList<>();
+	ArrayList <ItemBiblioteca> acervo;
+	//verificar de colocar num map para poder ordenar os itens em ordem alfabetica
+	
+	//metodo para adicionar item ao array acervo
+	
+	//metodo para remover item ao array acervo
+	
+	//metodo para remover um item do acervo
 }
