@@ -7,11 +7,18 @@ public class Livro extends ItemBiblioteca{
 		this.anoPublicacao = anoPublicacao;
 	}
 
-	public void verificarDisponibilidade() {
+	public boolean verificarDisponibilidade() {
+		boolean disponibilidade;
 		if(getQtdExemplares() <= 0) {
-			System.out.println("Indisponivel. Item esgostado!");
+			disponibilidade = false;
 		}else {
-			System.out.println("Disponivel. Quantidades de exemplares: " + getQtdExemplares());
+			disponibilidade = true;
 		}
+		return disponibilidade;
+	}
+
+	@Override
+	public String toString() {
+		return "Ano de publicação: " + anoPublicacao;
 	}
 }
