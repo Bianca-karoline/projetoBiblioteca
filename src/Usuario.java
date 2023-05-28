@@ -12,14 +12,12 @@ public class Usuario implements StatusEmprestavel{
 		this.email = email;
 	}
 	
-	//quero um metodo para definir status das subclasses de usuario
+	//quero um metodo para definir status das subclasses de pessoa
 	//se tiver true esta bloqueado e não pode emprestar
 	//se tiver false esta sem bloqueio e pode emprestar
 	//vai ser aplicado na hora que um usuario (aluno, funcionario, professor quiser realizar um emprestimo;
 	//cada subclasse vai ter que realizar a verificação com base no atraso do emprestimo
 	//verificar por data de emprestimo
-    
-    //talvez usar a mesma logica de disponivel de um item da bibilioteca
 	public boolean statusEmprestimo() {
 		boolean status = false;
 		return status;
