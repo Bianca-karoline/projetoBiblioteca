@@ -1,23 +1,9 @@
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Usuario{
+	private String funcao;
 
-    @Override
-    public void devolver() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void emprestar() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void regularizar() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    
+	public Funcionario(String nome, String cpf, String telefone, String email, String funcao) {
+		super(nome, cpf, telefone, email);
+		this.funcao = funcao;
+	}
 }
