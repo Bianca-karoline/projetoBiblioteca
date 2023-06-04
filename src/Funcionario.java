@@ -6,4 +6,7 @@ public class Funcionario extends Usuario{
 		super(nome, cpf, telefone, email);
 		this.funcao = funcao;
 	}
+	public void emprestar(int id){
+		
+	}
 }

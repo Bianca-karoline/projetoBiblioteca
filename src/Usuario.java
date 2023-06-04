@@ -1,8 +1,8 @@
 
-public class Usuario implements StatusEmprestavel{
+public class Usuario{
 	//atributos
 	private String nome, cpf, telefone, email;
-	private boolean statusEmprestimo;
+	private boolean statusEmprestimo = true;
 	
 	//metodos e construtores
 	public Usuario(String nome, String cpf, String telefone, String email) {
@@ -54,6 +54,14 @@ public class Usuario implements StatusEmprestavel{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean isStatusEmprestimo() {
+		return statusEmprestimo;
+	}
+
+	public void setStatusEmprestimo(boolean statusEmprestimo) {
+		this.statusEmprestimo = statusEmprestimo;
 	}
 	
 }
