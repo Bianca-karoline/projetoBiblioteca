@@ -4,8 +4,6 @@
 Software para biblioteca em Java, simples. O sistema contém somente as funcionalidades básicas, desenvolvido a fim de obter nota para a matéria de Desenvolvimento de Software do 3ª período de Análise e Desenvolvimento de Sistemas.
 
 # Autores: Bianca Karoline, Leonardo Emanuel
-Data início: 20/05/2023
-Data término:
 Data entrega: 19/06/2023
 
 
@@ -23,6 +21,7 @@ Exibir objetos das três classes (models);
 Relatórios (visualizações que evidencie o relacionamento entre as classes). 
 # Tecnologias utilizadas:
 Editor IDE Eclipse
+MySQL Workbench
 # Descrição do projeto:
 Sistema de gerenciamento simples de uma biblioteca, onde um funcionário (bibliotecário) previamente cadastrado poderá:
 cadastrar novos funcionários
