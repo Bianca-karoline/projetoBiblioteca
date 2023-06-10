@@ -1,0 +1,34 @@
+use biblioteca_db;
+CREATE TABLE usuario (
+    nome varchar(100),
+    cpf varchar(11) PRIMARY KEY,
+    telefone varchar(100),
+    email varchar(150),
+    atribuicao varchar(100),
+    status_emprestimo boolean
+);
+
+CREATE TABLE itemBiblioteca (
+    id_item int PRIMARY KEY,
+    titulo varchar (100),
+    autor varchar(100),
+    tipo varchar(100),
+    qtd_exemplares int
+);
+
+CREATE TABLE emprestimo (
+    id_emprestimo int PRIMARY KEY,
+    data_emprestimo date,
+    data_devolucao date,
+    status_emprestimo boolean,
+    fk_usuario_cpf varchar(100),
+    fk_itemBiblioteca_id_item int
+);
+ 
+ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_2
+    FOREIGN KEY (fk_usuario_cpf)
+    REFERENCES usuario (cpf);
+ 
+ALTER TABLE emprestimo ADD CONSTRAINT FK_emprestimo_3
+    FOREIGN KEY (fk_itemBiblioteca_id_item)
+    REFERENCES itemBiblioteca (id_item);
