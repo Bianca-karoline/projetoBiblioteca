@@ -1,76 +1,64 @@
+package models;
 
-public abstract class ItemBiblioteca implements Comparable<ItemBiblioteca>{
-	private String titulo, autor, editora, categoria;
+public class ItemBiblioteca implements Comparable<ItemBiblioteca>{
+	private int id;
+	private String titulo, autor, tipo;
 	private int qtdExemplares;
 	
 	//parametros, titulo, autor, editora, categoria, qtdExemplares
-	public ItemBiblioteca(String titulo, String autor, String editora, String categoria, int qtdExemplares) {
+	//@Constructor
+	public ItemBiblioteca(String titulo, String autor, String tipo, int qtdExemplares) {
+		//this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
-		this.editora = editora;
-		this.categoria = categoria;
+		this.tipo = tipo;
 		this.qtdExemplares = qtdExemplares;
+		}
+	//Method para verificar disponibilidade
+	public void disponivel() {	
+		if(qtdExemplares > 0) {
+			System.out.println("Disponivel! Qtd. Exemplares: " + this.qtdExemplares);
+		}else {
+			System.out.println("Indisponivel! Qtd. Exemplares: " + this.qtdExemplares);
+		}
 	}
-
-
-	//Metodo para verificar disponibilidade
-	public abstract boolean verificarDisponibilidade();
 	
-
+	//@Method para retornar o tipo de item, para buscas por tipo
+	public String toTipoItem() {
+        return tipo;
+    }
+	
+	//@Getters
+	public int getId() {
+		return id;
+	}
 	public String getTitulo() {
 		return titulo;
 	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
 	public String getAutor() {
 		return autor;
 	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public String getTipo() {
+		return tipo;
 	}
-
-	public String getEditora() {
-		return editora;
-	}
-
-	public void setEditora(String editora) {
-		this.editora = editora;
-	}
-
 	public int getQtdExemplares() {
 		return qtdExemplares;
 	}
-
+	
+	//@Setters
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	public void setQtdExemplares(int qtdExemplares) {
 		this.qtdExemplares = qtdExemplares;
 	}
 	
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	
-
-	@Override
-	public String toString() {
-		return "ItemBiblioteca [titulo=" + titulo 
-				+ ", autor=" + autor 
-				+ ", editora=" + editora 
-				+ ", categoria=" + categoria 
-				+ ", qtdExemplares=" + qtdExemplares 
-				+ "]";
-	}
-
-
 	@Override
 	public int compareTo(ItemBiblioteca item) {
 		return titulo.compareTo(item.titulo);
