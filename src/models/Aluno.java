@@ -1,5 +1,4 @@
 package models;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,7 +20,6 @@ public class Aluno extends Usuario{
 		if(isStatusEmprestimo()){
 			Emprestimo e = new Emprestimo(getCpf(), idLivro, (f.format(a.getTime())), (f.format(b.getTime())));
 			e.registra();
-			setStatusEmprestimo(false);
 		}else{
 			System.out.println("Usuario não pode emprestar");
 		}

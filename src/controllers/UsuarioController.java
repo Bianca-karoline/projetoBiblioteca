@@ -6,14 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import models.Aluno;
-
-import models.ConnectionFactory;
+import models.AlunoDao;
+import models.FabricaConexao;
 import models.Funcionario;
-
+import models.FuncionarioDao;
 
 public class UsuarioController {
-	ConnectionFactory conn  = new ConnectionFactory("root", "jdbc:mysql://localhost/biblioteca_db", "");
-	
+    FabricaConexao fc  = new FabricaConexao(
+			"root", "jdbc:mysql://localhost/biblio", "1234");
     Scanner sc = new Scanner(System.in);
     public void addUsuario(){
         String n, cpf, telefone, email;
@@ -43,8 +43,8 @@ public class UsuarioController {
                     email = sc.nextLine();
                 } while (n == null);
                 Funcionario f = new Funcionario(n,cpf,telefone, email);
-                //FuncionarioDao add = new FuncionarioDao();
-                //add.inserir(f);
+                FuncionarioDao add = new FuncionarioDao();
+                add.inserir(f);
                 break;
             case 2:
                 do {
@@ -68,34 +68,37 @@ public class UsuarioController {
                     email = sc.nextLine();
                 } while (n == null);
                 Aluno a = new Aluno(n,cpf,telefone, email);
-                //AlunoDao add2 = new AlunoDao();
-                //add2.inserir(a);
+                AlunoDao add2 = new AlunoDao();
+                add2.inserir(a);
             default:
         }
     }
     public void emprestar(){
         String cpf;
+        String teste = "";
         System.out.println("CPF do usuario: ");
         cpf = sc.next();
-        String sql = "SELECT atribuicao FROM usuario WHERE cpf = ?";
+        String sql = "SELECT atribuicao FROM usuario WHERE cpf = '" + cpf + "'";
         try {
-            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
-            ps.setString(1, cpf);
+            PreparedStatement ps = fc.getConnection().prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            String teste = result.getString(0);
+            if(result.next()){
+                teste = result.getString(1);
+            }
+            
             if(teste != null){
                 if(teste.equals("funcionario")){
                 Funcionario f = new Funcionario(cpf);
-                //FuncionarioDao add = new FuncionarioDao();
+                FuncionarioDao add = new FuncionarioDao();
                 System.out.println("Digite o id do livro: ");
                 String id = sc.next();
-                //add.emprestar(f, id);
+                add.emprestar(f, id);
                 }else{
                 Aluno f = new Aluno(cpf);
-                //AlunoDao add = new AlunoDao();
+                AlunoDao add = new AlunoDao();
                 System.out.println("Digite o id do livro: ");
                 String id = sc.next();
-                //add.emprestar(f, id);
+                add.emprestar(f, id);
                 }
             }else {
                 System.out.println("Erro buscar cpf");
@@ -103,26 +106,32 @@ public class UsuarioController {
 
         } catch (SQLException e) {
             System.out.println("Erro ao devolver");
+            
         }
+        
     }
     public void devolver(){
         String cpf;
+        String teste = "";
         System.out.println("CPF do usuario: ");
         cpf = sc.next();
-        String sql = "SELECT atribuicao FROM usuario WHERE cpf =" + cpf;
+        String sql = "SELECT atribuicao FROM usuario WHERE cpf = '" + cpf + "'";
         try {
-            PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+            PreparedStatement ps = fc.getConnection().prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            String teste = result.getString(0);
+            if(result.next()){
+                teste = result.getString(1);
+            }
+            
             if(teste != null){
                 if(teste.equals("funcionario")){
                 Funcionario f = new Funcionario(cpf);
-                //FuncionarioDao add = new FuncionarioDao();
-                //add.devolver(f);
+                FuncionarioDao add = new FuncionarioDao();
+                add.devolver(f);
                 }else{
                 Aluno f = new Aluno(cpf);
-                //AlunoDao add = new AlunoDao();
-                //add.devolver(f);
+                AlunoDao add = new AlunoDao();
+                add.devolver(f);
                 }
             }else {
                 System.out.println("Erro buscar cpf");
