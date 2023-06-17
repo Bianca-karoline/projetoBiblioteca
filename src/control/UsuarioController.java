@@ -75,14 +75,17 @@ public class UsuarioController {
     }
     public void emprestar(){
         String cpf;
+        String teste = "";
         System.out.println("CPF do usuario: ");
         cpf = sc.next();
-        String sql = "SELECT atribuicao FROM usuario WHERE cpf = ?";
+        String sql = "SELECT atribuicao FROM usuario WHERE cpf = '" + cpf + "'";
         try {
             PreparedStatement ps = fc.getConnection().prepareStatement(sql);
-            ps.setString(1, cpf);
             ResultSet result = ps.executeQuery();
-            String teste = result.getString(0);
+            if(result.next()){
+                teste = result.getString(1);
+            }
+            
             if(teste != null){
                 if(teste.equals("funcionario")){
                 Funcionario f = new Funcionario(cpf);
@@ -103,17 +106,23 @@ public class UsuarioController {
 
         } catch (SQLException e) {
             System.out.println("Erro ao devolver");
+            
         }
+        
     }
     public void devolver(){
         String cpf;
+        String teste = "";
         System.out.println("CPF do usuario: ");
         cpf = sc.next();
-        String sql = "SELECT atribuicao FROM usuario WHERE cpf =" + cpf;
+        String sql = "SELECT atribuicao FROM usuario WHERE cpf = '" + cpf + "'";
         try {
             PreparedStatement ps = fc.getConnection().prepareStatement(sql);
             ResultSet result = ps.executeQuery();
-            String teste = result.getString(0);
+            if(result.next()){
+                teste = result.getString(1);
+            }
+            
             if(teste != null){
                 if(teste.equals("funcionario")){
                 Funcionario f = new Funcionario(cpf);

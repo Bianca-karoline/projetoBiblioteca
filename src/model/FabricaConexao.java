@@ -19,9 +19,7 @@ public class FabricaConexao {
 		if (con == null) {
 			try {
 				con = DriverManager.getConnection(url, user,pass);
-				System.out.println("Conexão com o banco de dados ok");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
