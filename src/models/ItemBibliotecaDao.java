@@ -5,20 +5,19 @@ import java.sql.SQLException;
 
 public class ItemBibliotecaDao {
 	
-	public static void addItem(ItemBiblioteca item){
-		//@Method criando conexão
-		ConnectionFactory conn  = new ConnectionFactory("root", "jdbc:mysql://localhost/biblioteca_db", "");
+	public void addItem(String titulo, String autor, String tipo){
 		
-		//parametros titulo, autor, tipo, qtd_exemplares
-        String sql = "INSERT INTO itembiblioteca (titulo, autor, tipo, qtd_exemplares)" + "VALUES (?, ?, ?, ?)";
+		FabricaConexao fc  = new FabricaConexao(
+				"root", "jdbc:mysql://localhost/biblio", "1234");
+		
+        String sql = "INSERT INTO itembiblioteca (titulo, autor, tipo) VALUES (?, ?, ?)";
         
 		try {
-			PreparedStatement ps = conn.getConnection().prepareStatement(sql);
-			//parametros titulo, autor, tipo, qtd_exemplares
-			ps.setString(1, item.getTitulo());
-			ps.setString(2, item.getAutor());
-			ps.setString(3, item.getTipo());
-			ps.setInt(4, item.getQtdExemplares());
+			PreparedStatement ps = fc.getConnection().prepareStatement(sql);
+			
+			ps.setString(1, titulo);
+			ps.setString(2, autor);
+			ps.setString(3, tipo);
 
 			int rowAffected = ps.executeUpdate();
 			
@@ -33,4 +32,5 @@ public class ItemBibliotecaDao {
 			System.out.println("Erro ao inserir item");
 		}
     }
+
 }

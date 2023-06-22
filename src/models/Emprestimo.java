@@ -45,7 +45,7 @@ public class Emprestimo {
 			}
 			
 		}catch(SQLException e) {
-			System.out.println("Erro emp");
+			
 			
 		}
     }
@@ -67,7 +67,7 @@ public class Emprestimo {
 			}
 			
 		}catch(SQLException e) {
-			System.out.println("Erro ao devolver");
+			
 			
 		}
 		
@@ -88,7 +88,7 @@ public class Emprestimo {
             
 
         } catch (SQLException e) {
-            System.out.println("Erro ao devolver");
+            
         }
 	}
 }

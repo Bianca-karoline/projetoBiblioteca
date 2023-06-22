@@ -1,89 +1,65 @@
 package views;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import controllers.UsuarioController;
-import models.Artigo;
 import models.Emprestimo;
-import models.ItemBiblioteca;
-import models.Livro;
-import models.Revista;
+import controllers.ItemController;
 
 public class Menu {
+	ItemController i = new ItemController();
 	UsuarioController u = new UsuarioController();
 	Scanner sc = new Scanner(System.in);
 	Emprestimo e = new Emprestimo();
-	int op;
-	public static ItemBiblioteca MenuAddItem() {
-	    ItemBiblioteca item = null;
-		Scanner sc = new Scanner(System.in);
-	    String menu = "Qual o tipo do item:\n"
-	            + "[1] Livro\n"
-	            + "[2] Revista\n"
-	            + "[3] Artigo\n"
-	            + "[4] Voltar";
-	    
-	    int op;
-	    
-	    //do {
-	    	
-		    System.out.print(menu);
-		    op = sc.nextInt();
-		    sc.reset();
-	    
-	    switch(op) {
-	    
-	    case 1:
-	    	String tipo = "Livro";
-	        System.out.println("----------:Cadastro de Livro:----------");
-	        System.out.println("Digite o título do Livro: ");
-	        String titulo = sc.next();
-	        sc.reset();
-	        
-	        System.out.println("Digite o autor do Livro: ");
-			String autor = sc.next();
-			sc.reset();
-			
-			System.out.println("Digite a quantidade de exemplares do Livro: ");
-			int qtdExemplares = sc.nextInt();
-			sc.reset();
-
-	        item = new Livro(titulo, autor, tipo, qtdExemplares);
-	        
-	    }
-	    //}while(op <= 4);
-	    
-	    return item;
-	    
-	}
-		
+	int op;	
 		
 	public void menuPrincipal(){
-		do{
-			System.out.println("------------ MENU PRINCIPAL ------------\n"
-			+ "[1] Acervo \n" +
-			"[2] Inserir usuario \n" +
-			"[3] Emprestar \n" +
-			"[4] Devolver \n" +
-			"[5] Emprestimos");
-			op = sc.nextInt();
-			switch(op){
-				case 1:
-
-					break;
-				case 2:
-					u.addUsuario();
-					break;
-				case 3:
-					u.emprestar();
-					break;
-				case 4:
-					u.devolver();
-					break;
-				case 5:
-					e.relatorio();
-					break;
+			try {
+				do{
+					System.out.println("------------ MENU PRINCIPAL ------------\n"
+						+ "[1] Adicionar livro \n" +
+						"[2] Emprestimos\n" +
+						"[3] Inserir usuario \n" +
+						"[4] Emprestar \n" +
+						"[5] Devolver \n" +
+						"[6] Mostrar acervo\n"
+						+ "[7] Exibir revistas\n"
+						+ "[8] Exibir livros\n"
+						+ "[9] Exibir artigos");
+						op = sc.nextInt();
+						switch(op){
+							case 1:
+								i.addItem();
+								break;
+							case 2:
+								e.relatorio();
+								break;
+							case 3:
+								u.addUsuario();
+								break;
+							case 4:
+								u.emprestar();
+								break;
+							case 5:
+								u.devolver();
+								break;
+							case 6:
+								i.select();
+								break;
+							case 7:
+								i.exibirRevistas();
+								break;
+							case 8:
+								i.exibirLivros();
+								break;
+							case 9:
+								i.exibirArtigos();
+								break;
+						}
+					}while(op!=0);
+			}catch(InputMismatchException e) {
+				System.out.println("ERRO! Opção invalida");
 			}
-		}while(op!=0);
+			
 	}
 }
