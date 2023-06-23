@@ -80,7 +80,7 @@ public class Emprestimo {
             while (true){
 				if(result.next()){
 					System.out.println(result.getString(1) + '\t' + result.getString(2) + '\t' + result.getString(3) +
-					 '\t' + result.getString(4) + '\t' + result.getString(5));
+					 '\t' + result.getString(4) + '\t' + result.getString(5) + '\t' + result.getString(6));
             	}else{
 					break;
 			}

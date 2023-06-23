@@ -44,7 +44,7 @@ public class Menu {
 								u.devolver();
 								break;
 							case 6:
-								i.select();
+								i.exibir();
 								break;
 							case 7:
 								i.exibirRevistas();

@@ -1,13 +1,11 @@
 package controllers;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import models.Artigo;
 import models.FabricaConexao;
+import models.ItemBiblioteca;
 import models.ItemBibliotecaDao;
 import models.Livro;
 import models.Revista;
@@ -21,8 +19,8 @@ public class ItemController {
 	public void addItem() {
 		ItemBibliotecaDao i = new ItemBibliotecaDao();
 		String n, a;
-		System.out.println("[1] - Adicionar livro"
-				+ "[2] - Adicionar artigo"
+		System.out.println("[1] - Adicionar livro\n"
+				+ "[2] - Adicionar artigo\n"
 				+ "[3] - Adicionar revista");
 		try {
 			int op = sc.nextInt();
@@ -52,25 +50,9 @@ public class ItemController {
 		}
 		
 	}
-	public void select() {
-		String sql = "SELECT * FROM itembiblioteca;";
-		try {
-            PreparedStatement ps = fc.getConnection().prepareStatement(sql);
-            ResultSet result = ps.executeQuery();
-            while (true){
-				if(result.next()){
-					System.out.println(result.getString(1) + '\t' + result.getString(2) + '\t' + result.getString(3) +
-					 '\t' + result.getString(4));
-            	}else{
-					break;
-			}
-            
-            }  
-
-        } catch (SQLException e) {
-            System.out.println("Erro ao devolver");
-            
-        }
+	public void exibir() {
+		ItemBiblioteca i = new ItemBiblioteca();
+		i.exibir();
 
 	}
 	public void exibirRevistas() {
